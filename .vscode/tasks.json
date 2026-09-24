@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar arquivo atual (gcc)",
+      "type": "shell",
+      "command": "mkdir -p ${workspaceFolder}/build && gcc -Wall -Wextra -g \"${file}\" -o \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Compilar e executar arquivo atual",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+      "dependsOn": "Compilar arquivo atual (gcc)",
+      "presentation": { "focus": true, "panel": "dedicated" },
+      "problemMatcher": []
+    }
+  ]
+}
