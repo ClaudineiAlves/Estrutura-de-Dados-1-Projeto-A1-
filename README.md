@@ -4,6 +4,8 @@
 > Enunciado: [`../PRIMEIRO PROJETO-1.pdf`](../PRIMEIRO%20PROJETO-1.pdf)
 > Entrega: **04/10/2026 até 23h59**, pelo Canvas. Times de 3 a 4 alunos, cadastrados em Pessoas → ATIV_01.
 
+> 👥 **Integrantes do grupo:** para baixar o projeto e enviar alterações, leia o [`COMO_USAR_GITHUB.md`](COMO_USAR_GITHUB.md).
+
 ## Estrutura
 
 ```
