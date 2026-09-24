@@ -1,11 +1,8 @@
 # PED · 1º Projeto (A1): Monitoramento de Laboratórios
 
-> ⚠️ **Conteúdo avaliado.** Programação e Estrutura de Dados (prática), 2026.
-> Enunciado: [`../PRIMEIRO PROJETO-1.pdf`](../PRIMEIRO%20PROJETO-1.pdf)
+> Programação e Estrutura de Dados (prática), 2026.
 > Entrega: **04/10/2026 até 23h59**, pelo Canvas. Times de 3 a 4 alunos, cadastrados em Pessoas → ATIV_01.
-
-> 👥 **Integrantes do grupo:** para baixar o projeto e enviar alterações, leia o [`COMO_USAR_GITHUB.md`](COMO_USAR_GITHUB.md).
-
+ 
 ## Estrutura
 
 ```
@@ -39,24 +36,5 @@ Relatório em **PDF** exigido pelo enunciado:
 - desenvolvimento, com as dificuldades e soluções, as estruturas usadas e a decisão sobre a classificação tomada com o professor;
 - referências (sites com data de acesso).
 
-## Como usar no VSCodium
-
-```bash
-codium 2_second_semester/data_structures/projetos/projeto_1_labs
-```
-
-| Ação | Atalho |
-|---|---|
-| Compilar o `.c` aberto | `Ctrl+Shift+B` |
-| Compilar e executar (terminal interativo, `scanf` funciona) | Terminal → Run Task → *Compilar e executar arquivo atual* |
-| Depurar com breakpoints | `F5` |
-
-O programa é compilado com `gcc -Wall -Wextra -g`. Trate os avisos (*warnings*) como erros a corrigir.
-
-## Entrega (checklist)
-- [ ] `.c` único, compilando no CodeBlocks
-- [ ] PDF do relatório
-- [ ] Os dois arquivos enviados no Canvas até 04/10 às 23h59
-
 ## Planejamento
-As tarefas estão no Notion, no Projects Tracker, no projeto **Estrutura de Dados — 1º Projeto (A1)**.
+A organização e tarefas foram feitas no Notion.
