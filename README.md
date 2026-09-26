@@ -6,7 +6,7 @@
 ## Estrutura
 
 ```
-projeto_1_labs/
+Estrutura-de-Dados-1-Projeto-A1-/
 ├── .vscode/
 │   ├── tasks.json              → compilar / compilar e executar (gcc)
 │   ├── launch.json             → depurar com gdb (F5)
@@ -15,6 +15,8 @@ projeto_1_labs/
 ├── testes/       → entradas e casos de teste
 ├── relatorio/    → relatório em PDF da entrega
 ├── build/        → executáveis gerados (criada ao compilar; ignorada pelo git)
+├── README.md     → este arquivo
+├── guide_github.md → como baixar, trabalhar e enviar alterações pelo GitHub
 └── .gitignore
 ```
 
