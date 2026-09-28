@@ -1,1 +1,9 @@
 build/
+
+# Code::Blocks: executáveis, objetos e arquivos de projeto locais
+*.exe
+*.o
+bin/
+obj/
+*.layout
+*.depend
