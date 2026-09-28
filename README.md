@@ -16,7 +16,7 @@ Estrutura-de-Dados-1-Projeto-A1-/
 ├── relatorio/    → relatório em PDF da entrega
 ├── build/        → executáveis gerados (criada ao compilar; ignorada pelo git)
 ├── README.md     → este arquivo
-├── guide_github.md → como baixar, trabalhar e enviar alterações pelo GitHub
+├── guide_github.md → como baixar, trabalhar e enviar alterações pelo GitHub Desktop
 └── .gitignore
 ```
 
