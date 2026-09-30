@@ -2,6 +2,7 @@
 
 > Programação e Estrutura de Dados (prática), 2026.
 > Entrega: **04/10/2026 até 23h59**, pelo Canvas. Times de 3 a 4 alunos, cadastrados em Pessoas → ATIV_01.
+sabor shur
  
 ## Estrutura
 ```
