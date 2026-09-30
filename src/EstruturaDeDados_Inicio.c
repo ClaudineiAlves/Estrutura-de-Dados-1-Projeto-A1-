@@ -8,5 +8,7 @@ int main()
     int num_labs, cap_labs[LABS], qtd_dias, lab_day[LABS][DAYS];
     float m_desemp;
 
+    printf("Insira o numero de laboratorios:\n");
+
 
 }
