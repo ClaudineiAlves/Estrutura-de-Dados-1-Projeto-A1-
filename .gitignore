@@ -7,3 +7,6 @@ bin/
 obj/
 *.layout
 *.depend
+
+# Executáveis gerados pelo build (Linux, sem extensão)
+src/output/
