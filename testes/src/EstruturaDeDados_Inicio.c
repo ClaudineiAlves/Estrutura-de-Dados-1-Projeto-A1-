@@ -3,17 +3,21 @@
 #include <time.h>
 #define LABS 20
 #define DAYS 30
+#define coluna 30
 
 int main()
 {
 	int num_labs, qtd_dias, i, j;
-	int cap_labs[LABS];                   // Capacidade dos laboratorios
-	int lab_day[LABS][DAYS];              // Matriz de cada laboratorio por dia
-	double m_desemp[LABS];                // Media de desempenho
-	int qtd_alunos = 0, total_alunos = 0; // quantidades de alunos nos laboratórios e total no dia
-	int opcao, opcao2, opcao3, ehtrue = 0;
-	int coluna = 0;
-	int total_diario, media_diaria, maior_ocupacao, menor_ocupacao, dia_de_maior_mov;
+	int cap_labs[LABS];      // Capacidade dos laboratorios
+	int lab_day[LABS][DAYS]; // Matriz de cada laboratorio por dia
+	double m_desemp[LABS];   // Media de desempenho
+	int qtd_alunos=0; //quantidades de alunos nos laboratórios
+	int opcao, opcao2, opcao3, ehtrue=0;
+	int total_dia[DAYS];
+	float media_diaria[DAYS];
+	float taxa_media[LABS];
+	int maior_ocupacao,menor_ocupacao,maior_mov;
+	int aux,aux2;
 	srand(time(NULL));
 
 	do {
@@ -21,12 +25,13 @@ int main()
 		printf("\n--- MENU PRINCIPAL ---\n");
 		printf("1. Cadastrar Dados\n");
 		printf("2. Visualizar Dados Inseridos\n");
-		printf("3. Exibir Tabela de Ocupação\n");
+		printf("3. Exibir Tabela de Ocupacao\n");
 		printf("4. Calcular Indicadores\n");
 		printf("5. Exibir Indicadores\n");
-		printf("6. Laboratório mais oucapado\n");
-		printf("7. Classificação dos laboratóric\n");
-		printf("8. Exibir Relatório\n");
+		printf("6. Laboratorio mais oucapado\n");
+		printf("7. Classificacao dos laboratoric\n");
+		printf("8. Exibir Relatorio\n");
+
 
 		printf("9. Sair\n");
 		printf("Escolha uma opcao: ");
@@ -109,7 +114,7 @@ int main()
 									scanf("%lf", &m_desemp[i]);
 								}
 							}
-							ehtrue = 1;
+							ehtrue=1;
 							break;
 						case 2:
 							// Numero de laboratorios:
@@ -153,74 +158,132 @@ int main()
 									m_desemp[i] = ((double)rand() / RAND_MAX) * 10.0;
 								}
 							}
-							ehtrue = 1;
+							ehtrue=1;
 							break;
 						case 3:
 							printf("\nSaindo do programa...\n");
 							break;
-						default:
-							printf("\nOpcao invalida! Tente novamente.\n");
+                        default:
+                            printf("\nOpcao invalida! Tente novamente.\n");
 					}
 				} while (opcao2 != 3);
 
 				break;
 			case 2:
 				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+				if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
 				break;
 			case 3:
 				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+				if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
 				break;
 			case 4:
-				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
-
-				for (i = 0; i < num_labs; i++) {
-					//=+ num_labs[i][0];
-				}
-
+			    // verificação se dados foram inseridos
+                if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
+                for (j = 0; j < qtd_dias; j++) //for que começa o calculo de alunos no total de cada dia
+                {
+                    total_dia[j]=0;  //reinicia sempre para começar outro dia
+                    for (i=0; i<num_labs; i++) //usa esse for para passar de lab em lab no mesmo dia
+                    {
+                    total_dia[j] = total_dia[j] + lab_day[i][j]; //o total de aluno começou em 0, e para cada lab ele aumenta um i e permanece no mesmo J até acabar os labs do dia
+                    }
+                    printf("%d eh o numero de alunos no dia %d\n",total_dia[j],j+1);//PRINT DE TESTE
+                }
+                for (i = 0; i<num_labs; i++) //lab é fixo, então começa usando i no for
+                {
+                    media_diaria[i]=0;
+                    for (j=0; j<qtd_dias; j++)
+                    {
+                        media_diaria[i]=media_diaria[i]+lab_day[i][j];
+                    }
+                    media_diaria[i] = media_diaria[i]/qtd_dias; //média da quantidade pela quantidade de dias na pesquisa
+                }
+                for(i=0; i<num_labs; i++)//PRINT DE TESTE
+                {
+                    printf("\n%.2f eh a media do lab %d\n", media_diaria[i],i+1);
+                }
+                j=0;
+                aux=total_dia[j];
+                aux2=0;
+                for (j=0; j<qtd_dias; j++)
+                {
+                    if(aux<total_dia[j+1])
+                    {
+                        aux=total_dia[j+1];
+                        aux2=j;
+                    }
+                    else
+                    {
+                    }
+                }
+                printf("\nO maior dia eh %d\n", aux2+1); //PRINT DE TESTE
+                for (i=0; i<num_labs; i++)
+                {
+                    taxa_media[i]=0;
+                    taxa_media[i]=(media_diaria[i]/cap_labs[i])*100;
+                    printf("\nTaxa media do laboratorio %d eh %.2f \n",i+1,taxa_media[i]);
+                }
 				break;
 			case 5:
-				// verificação se dados foram inseridos
+			    // verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+			    if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
+                for (j=0; j<qtd_dias; j++);
+                {
+                    printf("%d eh o numero de alunos no dia %d\n",total_dia[j],j+1);
+                }
+                printf("\nO maior dia eh %d\n", aux2+1);
+                for(i=0; i<num_labs; i++)
+                {
+                    printf("\n%.2f eh a media do lab %d\n", media_diaria[i],i+1);
+                }
+                for (i=0; i<num_labs; i++)
+                {
+                    printf("\nTaxa media do laboratorio %d eh %.2f \n",i+1,taxa_media[i]);
+                }
 				break;
 			case 6:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+				if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
 				break;
 			case 7:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+				if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
 				break;
 			case 8:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
+				if(ehtrue==0)
+                {
+                    printf("Fazer o cadastro dos dados primeiro.");
+                    break;
+                }
 				do {
 					printf("\n--- MENU DE RELATÓRIO ---\n");
 					printf("1. Relatório de um laboratório\n");
@@ -238,8 +301,8 @@ int main()
 						case 3:
 							printf("\nSaindo do programa...\n");
 							break;
-						default:
-							printf("\nOpcao invalida! Tente novamente.\n");
+                        default:
+                            printf("\nOpcao invalida! Tente novamente.\n");
 					}
 				} while (opcao3 != 3);
 				break;
@@ -249,7 +312,7 @@ int main()
 			default:
 				printf("\nOpcao invalida! Tente novamente.\n");
 		}
-	} while (opcao != 3);
+	} while (opcao != 9);
 	/*
 
 	*/
