@@ -9,4 +9,4 @@ obj/
 *.depend
 
 # Executáveis gerados pelo build (Linux, sem extensão)
-src/output/
+output/
