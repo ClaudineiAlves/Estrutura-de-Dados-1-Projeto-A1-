@@ -7,13 +7,11 @@
 int main()
 {
 	int num_labs, qtd_dias, i, j;
-	int cap_labs[LABS];                   // Capacidade dos laboratorios
-	int lab_day[LABS][DAYS];              // Matriz de cada laboratorio por dia
-	double m_desemp[LABS];                // Media de desempenho
-	int qtd_alunos = 0, total_alunos = 0; // quantidades de alunos nos laboratórios e total no dia
-	int opcao, opcao2, opcao3, ehtrue = 0;
-	int coluna = 0;
-	int total_diario, media_diaria, maior_ocupacao, menor_ocupacao, dia_de_maior_mov;
+	int cap_labs[LABS];      // Capacidade dos laboratorios
+	int lab_day[LABS][DAYS]; // Matriz de cada laboratorio por dia
+	double m_desemp[LABS];   // Media de desempenho
+	int opcao, opcao2, opcao3;
+
 	srand(time(NULL));
 
 	do {
@@ -109,7 +107,6 @@ int main()
 									scanf("%lf", &m_desemp[i]);
 								}
 							}
-							ehtrue = 1;
 							break;
 						case 2:
 							// Numero de laboratorios:
@@ -153,74 +150,39 @@ int main()
 									m_desemp[i] = ((double)rand() / RAND_MAX) * 10.0;
 								}
 							}
-							ehtrue = 1;
 							break;
 						case 3:
 							printf("\nSaindo do programa...\n");
 							break;
-						default:
-							printf("\nOpcao invalida! Tente novamente.\n");
 					}
 				} while (opcao2 != 3);
 
 				break;
 			case 2:
 				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				break;
 			case 3:
 				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				break;
 			case 4:
 				// verificação se dados foram inseridos
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
-
-				for (i = 0; i < num_labs; i++) {
-					//=+ num_labs[i][0];
-				}
-
+				// verificação se dados foram calculados
 				break;
 			case 5:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				break;
 			case 6:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				break;
 			case 7:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				break;
 			case 8:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("Faça o cadastro dos dados primeiro.");
-					break;
-				}
 				do {
 					printf("\n--- MENU DE RELATÓRIO ---\n");
 					printf("1. Relatório de um laboratório\n");
@@ -238,8 +200,6 @@ int main()
 						case 3:
 							printf("\nSaindo do programa...\n");
 							break;
-						default:
-							printf("\nOpcao invalida! Tente novamente.\n");
 					}
 				} while (opcao3 != 3);
 				break;
