@@ -3,7 +3,6 @@
 #include <time.h>
 #define LABS 20
 #define DAYS 30
-#define coluna 30
 #define BLOCO 10
 
 // Descarta o que sobrou na linha depois do scanf (o '\n' do ENTER ou letras digitadas
