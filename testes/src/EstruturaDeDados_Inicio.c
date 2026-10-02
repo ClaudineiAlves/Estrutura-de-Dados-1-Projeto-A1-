@@ -274,7 +274,7 @@ void exibir_indicadores(int num_labs, int qtd_dias, int total_dia[], float media
 	printf("\n--- INDICADORES ---\n");
 
 	// Total de alunos de cada dia
-	printf("\nDia | Total de alunos\n");
+	printf("\nDia | Total de2 alunos\n");
 	for (j = 0; j < qtd_dias; j++) {
 		printf("%3d | %15d\n", j + 1, total_dia[j]);
 	}
@@ -390,6 +390,7 @@ int main()
 				}
 				calcular_indicadores(num_labs, cap_labs, qtd_dias, lab_day, total_dia, media_diaria,
 				                     taxa_media, &aux2);
+                    ehtrue2=1;
 				break;
 			case 5:
 				// verificação se dados foram inseridos
