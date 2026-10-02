@@ -210,7 +210,7 @@ void visualizar_dados(int num_labs, int cap_labs[], int qtd_dias, double m_desem
 }
 
 // MENU PRINCIPAL -> 3. Exibir Tabela de Ocupacao
-void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {}
+void exibir_tabela_ocupacao() {}
 
 // MENU PRINCIPAL -> 4. Calcular Indicadores
 void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_day[][DAYS],
@@ -331,7 +331,7 @@ int main()
 	int cap_labs[LABS];      // Capacidade dos laboratorios
 	int lab_day[LABS][DAYS]; // Matriz de cada laboratorio por dia
 	double m_desemp[LABS];   // Media de desempenho
-	int opcao, ehtrue = 0;
+	int opcao, ehtrue = 0, ehtrue2 = 0;
 	int total_dia[DAYS];
 	float media_diaria[DAYS];
 	float taxa_media[LABS];
@@ -394,8 +394,8 @@ int main()
 			case 5:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("\nFazer o cadastro dos dados primeiro.\n");
+				if (ehtrue == 0 || ehtrue2 == 0) {
+					printf("\nFazer o cadastro dos dados e calcular indicadores primeiro.\n");
 					break;
 				}
 				exibir_indicadores(num_labs, qtd_dias, total_dia, media_diaria, taxa_media, aux2);
@@ -403,8 +403,8 @@ int main()
 			case 6:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("\nFazer o cadastro dos dados primeiro.\n");
+				if (ehtrue == 0 || ehtrue2 == 0) {
+					printf("\nFazer o cadastro dos dados e calcular indicadores primeiro.\n");
 					break;
 				}
 				laboratorio_mais_ocupado();
@@ -412,8 +412,8 @@ int main()
 			case 7:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("\nFazer o cadastro dos dados primeiro.\n");
+				if (ehtrue == 0 || ehtrue2 == 0) {
+					printf("\nFazer o cadastro dos dados e calcular indicadores primeiro.\n");
 					break;
 				}
 				classificacao_laboratorios();
@@ -421,8 +421,8 @@ int main()
 			case 8:
 				// verificação se dados foram inseridos
 				// verificação se dados foram calculados
-				if (ehtrue == 0) {
-					printf("\nFazer o cadastro dos dados primeiro.\n");
+				if (ehtrue == 0 || ehtrue2 == 0) {
+					printf("\nFazer o cadastro dos dados e calcular indicadores primeiro.\n");
 					break;
 				}
 				menu_relatorio();
