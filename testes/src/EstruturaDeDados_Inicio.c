@@ -263,6 +263,41 @@ void exibir_tabela_ocupacao(int num_labs, int qtd_dias,
         }
     }
 }
+void mais_e_menos_ocupados(int num_labs, int lab_ocupado[DAYS][LABS],
+                           int qtd_dias, int lab_day[LABS][DAYS])
+{
+    int i,j,maior,menor,aux;
+    int minimo[LABS];
+    printf("\n=====Tabela de maior ocupacao=====\n\n");
+    for (j=0; j<qtd_dias; j++){
+        maior = lab_day[0][j];
+        aux=0;
+        for (i=1; i<num_labs; i++){
+            if(maior<lab_day[i][j]){
+                maior=lab_day[i][j];
+                aux=i;
+            }
+        }
+        lab_ocupado[j][aux]=maior;
+        printf("Dia %d\t Lab %d\t Ocupacao: %d alunos\n", j+1, aux+1, maior);
+    }
+    printf("\n=====Tabela de menor ocupacao=====\n\n");
+    for (j=0; j<qtd_dias; j++){
+        menor = lab_day[0][j];
+        aux=0;
+        for (i=1; i<num_labs; i++){
+            if(menor>lab_day[i][j]){
+                menor=lab_day[i][j];
+                aux=i;
+                if(menor==0){
+                    //PRECISA VER COMO VAI FAZER PARA APARECERE DOIS IGUAIS
+                }
+            }
+        }
+        lab_ocupado[j][aux]=menor;
+        printf("Dia %d\t Lab %d\t Ocupacao: %d alunos\n", j+1, aux+1, menor);
+}
+}
 
 // MENU PRINCIPAL -> 4. Calcular Indicadores
 void calcular_indicadores(int num_labs, int cap_labs[],
@@ -675,6 +710,7 @@ int main()
 
     int cap_labs[LABS];
     int lab_day[LABS][DAYS];
+    int lab_ocupado[DAYS][LABS];
 
     double m_desemp[LABS];
 
@@ -760,6 +796,8 @@ int main()
                 exibir_tabela_ocupacao(num_labs,
                                        qtd_dias,
                                        lab_day);
+                mais_e_menos_ocupados(num_labs, lab_ocupado,
+                            qtd_dias, lab_day);
 
                 break;
 
