@@ -4,6 +4,7 @@
 #define LABS 20
 #define DAYS 30
 #define coluna 30
+#define BLOCO 10
 
 // Descarta o que sobrou na linha depois do scanf (o '\n' do ENTER ou letras digitadas
 // no lugar de numero). Sem isso, uma letra fica presa na entrada e o while de validacao
@@ -210,7 +211,37 @@ void visualizar_dados(int num_labs, int cap_labs[], int qtd_dias, double m_desem
 }
 
 // MENU PRINCIPAL -> 3. Exibir Tabela de Ocupacao
-void exibir_tabela_ocupacao() {}
+void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS])
+{
+	int i, j, inicio, fim;
+
+	printf("\n===== TABELA DE OCUPACAO =====\n");
+	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) {
+
+		fim = inicio + BLOCO;
+		if (fim > qtd_dias) {
+			fim = qtd_dias;
+		}
+
+		printf("\n");
+
+		// cabecalho do bloco
+		printf("Laboratorio");
+		for (j = inicio; j < fim; j++) {
+			printf(" Dia %02d", j + 1);
+		}
+		printf("\n");
+
+		// uma linha por laboratorio
+		for (i = 0; i < num_labs; i++) {
+			printf("     Lab %02d", i + 1);
+			for (j = inicio; j < fim; j++) {
+				printf("%7d", lab_day[i][j]);
+			}
+			printf("\n");
+		}
+	}
+}
 
 // MENU PRINCIPAL -> 4. Calcular Indicadores
 void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_day[][DAYS],
@@ -371,7 +402,7 @@ int main()
 					break;
 				}
 				visualizar_dados(num_labs, cap_labs, qtd_dias, m_desemp);
-				exibir_tabela_ocupacao();
+				exibir_tabela_ocupacao(num_labs, qtd_dias, lab_day);
 
 				break;
 			case 3:
@@ -380,7 +411,7 @@ int main()
 					printf("\nFazer o cadastro dos dados primeiro.\n");
 					break;
 				}
-				exibir_tabela_ocupacao();
+				exibir_tabela_ocupacao(num_labs, qtd_dias, lab_day);
 				break;
 			case 4:
 				// verificação se dados foram inseridos
