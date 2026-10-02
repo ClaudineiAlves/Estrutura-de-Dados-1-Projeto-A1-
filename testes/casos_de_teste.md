@@ -21,6 +21,8 @@ for f in testes/entradas/*.txt; do
 done
 ```
 
+> **Linhas em branco** nas entradas são o ENTER do "Pressione ENTER para continuar...", que aparece depois de cada opção do menu principal (menos a 9). Elas ficam no lugar que a versão final vai precisar: depois do `<dia>` da opção 6 e depois do `3` que fecha o submenu de relatório. Como `scanf("%d")` pula linhas em branco, uma linha em branco a mais não atrapalha.
+
 > ⚠️ As entradas seguem **a numeração do menu atual** (1 cadastrar · 2 visualizar · 3 tabela · 4 calcular · 5 exibir indicadores · 6 lab mais ocupado · 7 classificação · 8 relatório · 9 sair). Se o menu mudar (o enunciado usa **0 para encerrar**), atualizem os arquivos.
 
 ### Sequência usada nos casos 01 a 04
