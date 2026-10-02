@@ -2,6 +2,11 @@ BasedOnStyle: LLVM
 IndentWidth: 4
 TabWidth: 4
 UseTab: ForIndentation
-BreakBeforeBraces: Linux
+BreakBeforeBraces: Attach
 IndentCaseLabels: true
 ColumnLimit: 100
+MaxEmptyLinesToKeep: 1
+KeepEmptyLines:
+  AtStartOfBlock: false
+  AtStartOfFile: false
+  AtEndOfFile: false
