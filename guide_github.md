@@ -212,3 +212,38 @@ O e-mail configurado não é o da sua conta. Corrija em **File → Options… �
 | Abrir o repositório no site | GitHub Desktop: **Repository → View on GitHub** | `Ctrl+Shift+G` |
 
 Quem já usa o Git pelo terminal ou pelo Source Control do VS Code pode continuar assim. Tudo funciona no mesmo repositório.
+
+
+Quando o git pull reclamar de "local changes would be overwritten"
+
+1. Veja o que está pendente:
+git status
+git diff
+2. Escolha um caminho:
+
+   A) Suas mudanças importam e você quer mantê-las:
+git add .
+git commit -m "descreva o que fez"
+git pull --rebase
+   Se der conflito, o Git marca os trechos com <<<<<<< e >>>>>>>. Edite o arquivo deixando a versão certa e depois rode:
+git add <arquivo>
+git rebase --continue
+
+   B) Você não tem certeza se as mudanças importam (foi o que eu fiz):
+git stash push -m "backup"
+git pull --ff-only
+git stash pop        # tenta reaplicar; se der conflito, resolva como no caminho A
+
+   C) Suas mudanças não importam (testes, rascunho):
+git restore <arquivo>
+git pull --ff-only
+   ⚠️ Isso apaga suas alterações sem volta.
+
+Dica rápida
+
+Para saber se o GitHub tem algo novo antes de puxar:
+git fetch
+git status          # mostra "behind by N commits"
+git log --oneline main..origin/main   # lista o que chegou
+
+Se quiser, posso deixar o Git configurado para usar rebase no pull por padrão (git config pull.rebase true). Fica mais fácil de seguir o caminho A.
