@@ -210,26 +210,7 @@ void visualizar_dados(int num_labs, int cap_labs[], int qtd_dias, double m_desem
 }
 
 // MENU PRINCIPAL -> 3. Exibir Tabela de Ocupacao
-void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS])
-{
-	int i, j;
-
-	// Ocupacao: linha = lab, coluna = dia
-	printf("\nOcupacao por dia:\n");
-	printf("Lab ");
-	for (j = 0; j < qtd_dias; j++) {
-		printf("D%-3d", j + 1); // cabeçalho dos dias
-	}
-
-	printf("\n");
-	for (i = 0; i < num_labs; i++) {
-		printf("%3d ", i + 1);
-		for (j = 0; j < qtd_dias; j++) {
-			printf("%-4d", lab_day[i][j]);
-		}
-		printf("\n");
-	}
-}
+void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {}
 
 // MENU PRINCIPAL -> 4. Calcular Indicadores
 void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_day[][DAYS],
@@ -390,7 +371,7 @@ int main()
 					break;
 				}
 				visualizar_dados(num_labs, cap_labs, qtd_dias, m_desemp);
-				exibir_tabela_ocupacao(num_labs, qtd_dias, lab_day);
+				exibir_tabela_ocupacao();
 
 				break;
 			case 3:
@@ -399,7 +380,7 @@ int main()
 					printf("\nFazer o cadastro dos dados primeiro.\n");
 					break;
 				}
-				exibir_tabela_ocupacao(num_labs, qtd_dias, lab_day);
+				exibir_tabela_ocupacao();
 				break;
 			case 4:
 				// verificação se dados foram inseridos
