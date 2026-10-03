@@ -265,18 +265,40 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 void mais_e_menos_ocupados(int num_labs, int lab_ocupado[DAYS][LABS], int qtd_dias, int lab_day[LABS][DAYS]) {
 	int i, j, maior, menor, aux;
 	int minimo[LABS];
+	int grupo_maior_lab[LABS];
+	int grupo_menor_lab[LABS];
+	int contador_maior = 0;
+	int contador_menor = 0;
 	printf("\n=====Tabela de maior ocupacao=====\n\n");
-	for (j = 0; j < qtd_dias; j++) {
-		maior = lab_day[0][j];
+	for (j = 0; j < qtd_dias; j++) { //define um dia fixo primeiro
+		maior = lab_day[0][j]; //atribui para a variável "maior" o valor do índice de cada dia, pois só irá guardar um valor
 		aux = 0;
-		for (i = 1; i < num_labs; i++) {
+		for (i = 0; i < num_labs; i++) { //ERA UM ANTES E ESTAVA DANDO CERTO
 			if (maior < lab_day[i][j]) {
-				maior = lab_day[i][j];
+				maior = lab_day[i][j]; //a variavel maior vai passar a valer o valor de alunos e vai alterando até acabar o valor
 				aux = i;
 			}
 		}
+		for (i=0; i<LABS; i++) {
+            grupo_maior_lab[i]=0;
+		}
+		contador_maior = 0; //CRIEI O CONTADOR MAIOR
+		for (i = 1; i < num_labs; i++) { //for para verificar se há mais algum laboratório com a mesma ocupação e adiciona-lo ao vetor
+            if (maior == lab_day[i][j]) {
+                grupo_maior_lab[contador_maior] = i;
+                contador_maior++; //INVERTI OS DOISSSSSSS
+
+            }
+		}
+		printf("\n VALOR DO CONTADOR MAIOR %d\n",contador_maior);
 		lab_ocupado[j][aux] = maior;
 		printf("Dia %d\t Lab %d\t Ocupacao: %d alunos\n", j + 1, aux + 1, maior);
+		if (contador_maior > 1) {
+            printf("Dia %d contem os seguintes labs a mais\n", j+1);
+            for (i = 0; i<contador_maior; i++) {
+                printf("Lab %d\t\n", grupo_maior_lab[i+1]);
+            }
+		}
 	}
 	printf("\n=====Tabela de menor ocupacao=====\n\n");
 	for (j = 0; j < qtd_dias; j++) {
