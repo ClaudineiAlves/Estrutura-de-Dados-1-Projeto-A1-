@@ -222,8 +222,6 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 		for (i = 0; i < num_labs; i++) {
 			total_dia[j] += lab_day[i][j];
 		}
-
-		printf("%d eh o numero de alunos no dia %d\n", total_dia[j], j + 1);
 	}
 
 	// Media diaria de cada laboratorio
@@ -238,7 +236,6 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 	}
 
 	for (i = 0; i < num_labs; i++) {
-		printf("\n%.2f eh a media do lab %d\n", media_diaria[i], i + 1);
 	}
 
 	// Dia de maior movimentacao
@@ -252,13 +249,9 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 		}
 	}
 
-	printf("\nO maior dia eh %d\n", *aux2 + 1);
-
 	// Taxa media de ocupacao
 	for (i = 0; i < num_labs; i++) {
 		taxa_media[i] = (media_diaria[i] / cap_labs[i]) * 100.0f;
-
-		printf("\nTaxa media do laboratorio %d eh %.2f\n", i + 1, taxa_media[i]);
 	}
 }
 // MENU PRINCIPAL -> 4.2 Calcular indicaores maior e menor
@@ -273,7 +266,7 @@ void mais_e_menos_ocupados(int num_labs, int lab_ocupado[DAYS][LABS], int qtd_di
 	for (j = 0; j < qtd_dias; j++) { //define um dia fixo primeiro
 		maior = lab_day[0][j]; //atribui para a variável "maior" o valor do índice de cada dia, pois só irá guardar um valor
 		aux = 0;
-		for (i = 0; i < num_labs; i++) { //ERA UM ANTES E ESTAVA DANDO CERTO
+		for (i = 0; i < num_labs; i++) {
 			if (maior < lab_day[i][j]) {
 				maior = lab_day[i][j]; //a variavel maior vai passar a valer o valor de alunos e vai alterando até acabar o valor
 				aux = i;
@@ -283,38 +276,47 @@ void mais_e_menos_ocupados(int num_labs, int lab_ocupado[DAYS][LABS], int qtd_di
             grupo_maior_lab[i]=0;
 		}
 		contador_maior = 0; //CRIEI O CONTADOR MAIOR
-		for (i = 1; i < num_labs; i++) { //for para verificar se há mais algum laboratório com a mesma ocupação e adiciona-lo ao vetor
+		for (i = 0; i < num_labs; i++) { //for para verificar se há mais algum laboratório com a mesma ocupação e adiciona-lo ao vetor
             if (maior == lab_day[i][j]) {
                 grupo_maior_lab[contador_maior] = i;
-                contador_maior++; //INVERTI OS DOISSSSSSS
+                contador_maior++;
 
             }
 		}
-		printf("\n VALOR DO CONTADOR MAIOR %d\n",contador_maior);
 		lab_ocupado[j][aux] = maior;
-		printf("Dia %d\t Lab %d\t Ocupacao: %d alunos\n", j + 1, aux + 1, maior);
-		if (contador_maior > 1) {
-            printf("Dia %d contem os seguintes labs a mais\n", j+1);
-            for (i = 0; i<contador_maior; i++) {
-                printf("Lab %d\t\n", grupo_maior_lab[i+1]);
+		printf("Dia %d\t Ocupacao: %d alunos\n", j + 1, maior);
+        for (i = 0; i<contador_maior; i++) {
+            printf("Lab %d\t\n", 1 + grupo_maior_lab[i]);
             }
-		}
+        printf("\n");
 	}
 	printf("\n=====Tabela de menor ocupacao=====\n\n");
-	for (j = 0; j < qtd_dias; j++) {
-		menor = lab_day[0][j];
+	for (j = 0; j < qtd_dias; j++) { //define um dia fixo primeiro
+		menor = lab_day[0][j]; //atribui para a variável "maior" o valor do índice de cada dia, pois só irá guardar um valor
 		aux = 0;
-		for (i = 1; i < num_labs; i++) {
+		for (i = 0; i < num_labs; i++) {
 			if (menor > lab_day[i][j]) {
-				menor = lab_day[i][j];
+				menor = lab_day[i][j]; //a variavel maior vai passar a valer o valor de alunos e vai alterando até acabar o valor
 				aux = i;
-				if (menor == 0) {
-					// PRECISA VER COMO VAI FAZER PARA APARECERE DOIS IGUAIS
-				}
 			}
 		}
+		for (i=0; i<LABS; i++) {
+            grupo_menor_lab[i]=0;
+		}
+		contador_menor = 0; //CRIEI O CONTADOR MENOR
+		for (i = 0; i < num_labs; i++) { //for para verificar se há mais algum laboratório com a mesma ocupação e adiciona-lo ao vetor
+            if (menor == lab_day[i][j]) {
+                grupo_menor_lab[contador_menor] = i;
+                contador_menor++;
+
+            }
+		}
 		lab_ocupado[j][aux] = menor;
-		printf("Dia %d\t Lab %d\t Ocupacao: %d alunos\n", j + 1, aux + 1, menor);
+		printf("Dia %d\t Ocupacao: %d alunos\n", j + 1, menor);
+        for (i = 0; i<contador_menor; i++) {
+            printf("Lab %d\t\n", 1 + grupo_menor_lab[i]);
+            }
+        printf("\n");
 	}
 }
 // MENU PRINCIPAL -> 5. Exibir Indicadores
