@@ -99,7 +99,7 @@ int main() {
 								printf("\nInsira o numero de laboratorios (1 a %d): ", LABS);
 								num_labs = 0;
 								scanf("%d", &num_labs);
-								while ((c = getchar()) != '\n' && c != EOF)
+								while ((c = getchar()) != '\n' && c != EOF) //limpa a saida do teclado a cada scanf
 									;
 								if (c == EOF) {
 									printf("\nFim da entrada. Encerrando...\n");
