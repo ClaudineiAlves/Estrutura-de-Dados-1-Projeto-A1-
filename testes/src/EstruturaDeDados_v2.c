@@ -7,8 +7,6 @@
 #define BLOCO 15
 #define TOLERANCIA 0.001f
 
-// Versao sem funcoes: todo o programa fica dentro da main.
-//
 // Toda leitura segue o mesmo padrao:
 //   1. a variavel recebe um valor invalido antes do scanf;
 //   2. o scanf tenta ler (se o usuario digitar letras, a variavel continua invalida);
@@ -19,7 +17,7 @@ int main() {
 	int num_labs = 0;
 	int qtd_dias = 0;
 
-	int cap_labs[LABS];
+	int cap_labs[LABS]; // o indice indica qual laboratório está sendo usado
 	int lab_day[LABS][DAYS];
 
 	double m_desemp[LABS];
@@ -49,12 +47,12 @@ int main() {
 
 	do {
 		printf("\n--- MENU PRINCIPAL ---\n");
-		printf("1 - Cadastrar dados\n");
-		printf("2 - Exibir tabela de ocupacao\n");
-		printf("3 - Calcular indicadores\n");
-		printf("4 - Laboratorio mais ocupado\n");
-		printf("5 - Classificacao dos laboratorios\n");
-		printf("6 - Exibir relatorio\n");
+		printf("1 - Cadastrar dados\n"); //breno/ nei
+		printf("2 - Exibir tabela de ocupacao\n"); //breno
+		printf("3 - Calcular indicadores\n"); //mateus
+		printf("4 - Laboratorio mais ocupado\n"); //mateus
+		printf("5 - Classificacao dos laboratorios\n");// rocha
+		printf("6 - Exibir relatorio\n"); //nei/ rocha
 		printf("0 - Encerrar\n");
 		printf("Escolha uma opcao: ");
 
