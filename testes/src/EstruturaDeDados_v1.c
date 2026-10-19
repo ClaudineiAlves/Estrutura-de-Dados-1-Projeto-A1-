@@ -223,7 +223,8 @@ void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {
 	int i, j, inicio, fim;
 
 	printf("\n===== TABELA DE OCUPACAO =====\n");
-	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) {
+	//Cada volta do laço equivale a um bloco
+	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) { //inicio pula de 15 em 15 para caber na tela
 		fim = inicio + BLOCO;
 		if (fim > qtd_dias) {
 			fim = qtd_dias;
