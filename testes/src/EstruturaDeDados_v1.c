@@ -622,12 +622,12 @@ int main() {
 
 	do {
 		printf("\n--- MENU PRINCIPAL ---\n");
-		printf("1 - Cadastrar dados\n");
-		printf("2 - Exibir tabela de ocupacao\n");
-		printf("3 - Calcular indicadores\n");
-		printf("4 - Laboratorio mais ocupado\n");
-		printf("5 - Classificacao dos laboratorios\n");
-		printf("6 - Exibir relatorio\n");
+		printf("1 - Cadastrar dados\n"); //breno/ nei
+		printf("2 - Exibir tabela de ocupacao\n"); //breno
+		printf("3 - Calcular indicadores\n"); //mateus
+		printf("4 - Laboratorio mais ocupado\n"); //mateus
+		printf("5 - Classificacao dos laboratorios\n");// rocha
+		printf("6 - Exibir relatorio\n"); //nei/ rocha
 		printf("0 - Encerrar\n");
 		printf("Escolha uma opcao: ");
 
