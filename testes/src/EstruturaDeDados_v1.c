@@ -220,22 +220,24 @@ void menu_cadastro(int *num_labs, int cap_labs[], int *qtd_dias, int lab_day[][D
 
 // MENU PRINCIPAL -> 2. Exibir Tabela de Ocupacao
 void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {
-	int i, j, inicio, fim;
+	int i, j, inicio, fim; //i=laboratórios(linha), j=dias(coluna)
 
 	printf("\n===== TABELA DE OCUPACAO =====\n");
 	//Cada volta do laço equivale a um bloco
-	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) { //inicio pula de 15 em 15 para caber na tela
+	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) { //"inicio" pula de 15 em 15 para caber na tela
 		fim = inicio + BLOCO;
 		if (fim > qtd_dias) {
 			fim = qtd_dias;
 		}
 
 		printf("\nLaboratorio");
+		//Imprime todos os dias
 		for (j = inicio; j < fim; j++) {
-			printf(" Dia %02d", j + 1);
+			printf(" Dia %02d", j + 1); //para os dias ficarem com zero na frente, ex: 1 vira 01
 		}
 		printf("\n");
 
+		//Imprime todos os labs
 		for (i = 0; i < num_labs; i++) {
 			printf("     Lab %02d", i + 1);
 			for (j = inicio; j < fim; j++) {
@@ -246,15 +248,16 @@ void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {
 	}
 }
 
-// Calcula os indicadores que ficam guardados nos vetores.
+// Calcula e guarda em vetores três indicadores: "total_dia", "media_diaria" e "taxa_media".
 // Chamada logo apos cada cadastro, para a classificacao e os relatorios ja terem os valores.
 void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_day[][DAYS],
                           int total_dia[], float media_diaria[], float taxa_media[]) {
 	int i, j;
 
 	// Total diario
+	// Para cada dia, soma a coluna inteira, ou seja, o total de alunos em todos os labs naquele dia.
 	for (j = 0; j < qtd_dias; j++) {
-		total_dia[j] = 0;
+		total_dia[j] = 0; // zera o acumulador antes de somar para nao ficar com lixo de memória ou valor de cadastro anterior
 
 		for (i = 0; i < num_labs; i++) {
 			total_dia[j] += lab_day[i][j];
@@ -262,6 +265,7 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 	}
 
 	// Media diaria de cada laboratorio
+	// Soma a linha inteira e divide pela quantidade de dias.
 	for (i = 0; i < num_labs; i++) {
 		media_diaria[i] = 0;
 
@@ -272,7 +276,7 @@ void calcular_indicadores(int num_labs, int cap_labs[], int qtd_dias, int lab_da
 		media_diaria[i] /= qtd_dias;
 	}
 
-	// Taxa media de ocupacao
+	// Taxa media de ocupacao: A taxa é quanto da capacidade, em média, está sendo usada
 	for (i = 0; i < num_labs; i++) {
 		taxa_media[i] = (media_diaria[i] / cap_labs[i]) * 100.0f;
 	}
