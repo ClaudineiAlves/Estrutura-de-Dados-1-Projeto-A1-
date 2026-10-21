@@ -94,7 +94,7 @@ void cadastro_manual(int *num_labs, int cap_labs[], int *qtd_dias, int lab_day[]
 	printf("\nInforme a media de desempenho de cada laboratorio (0 a 10):\n");
 	for (i = 0; i < *num_labs; i++) {
 		printf("Laboratorio %d: ", i + 1);
-		m_desemp[i] = -1;
+		m_desemp[i] = -1; //caso o valor inserido esteja errado no "scanf", nao irá aceitar o valor anterior por engano, por ser inválido tamém.
 		scanf("%lf", &m_desemp[i]);
 		limpar_buffer();
 
@@ -220,14 +220,14 @@ void menu_cadastro(int *num_labs, int cap_labs[], int *qtd_dias, int lab_day[][D
 
 // MENU PRINCIPAL -> 2. Exibir Tabela de Ocupacao
 void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {
-	int i, j, inicio, fim; //i=laboratórios(linha), j=dias(coluna)
+	int i, j, inicio, fim;
 
 	printf("\n===== TABELA DE OCUPACAO =====\n");
 	//Cada volta do laço equivale a um bloco
 	for (inicio = 0; inicio < qtd_dias; inicio += BLOCO) { //"inicio" pula de 15 em 15 para caber na tela
 		fim = inicio + BLOCO;
 		if (fim > qtd_dias) {
-			fim = qtd_dias;
+			fim = qtd_dias; //para ter a certeza que o bloco nao passou o total de dias
 		}
 
 		printf("\nLaboratorio");
@@ -241,7 +241,7 @@ void exibir_tabela_ocupacao(int num_labs, int qtd_dias, int lab_day[][DAYS]) {
 		for (i = 0; i < num_labs; i++) {
 			printf("     Lab %02d", i + 1);
 			for (j = inicio; j < fim; j++) {
-				printf("%7d", lab_day[i][j]);
+				printf("%7d", lab_day[i][j]); //para alinhar, ficando com 7 espaços para ser usado
 			}
 			printf("\n");
 		}
